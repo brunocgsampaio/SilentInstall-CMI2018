@@ -92,13 +92,13 @@ IF %OS%==32BIT (
 
 SET /p "=* WPS Office " <NUL
 REM https://www.wps.com/download/
-START /wait %NEWPATH%\wpsoffice_free_10.2.0.5996_mui.exe /S /ACCEPTEULA=1
+START /wait %NEWPATH%\setup_XA_mui_10.2.0.5996_Free_100.103.exe /S /ACCEPTEULA=1
 IF EXIST "%UserProfile%\AppData\Local\Kingsoft\WPS Office" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
 SET /p "=* Avira " <NUL
 REM https://www.avira.com/pt-br/free-antivirus-windows#start-download-av
 REM ** PS: Cannot fully install this boy silently. Consider opening it afterwards **
-START /wait %NEWPATH%\avira_ptbr_av_5a6cc21982c7f__ws.exe /S /v/qn
+START /wait %NEWPATH%\avira_ptbr_av_5a6e51e342864__ws.exe /S /v/qn
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Avira" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
