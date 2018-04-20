@@ -78,13 +78,13 @@ IF %OS%==32BIT (
     IF EXIST "C:\Program Files (x86)\Adobe" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 
-SET /p "=* Java 8u161 " <NUL
+SET /p "=* Java 8u171 " <NUL
 REM https://www.java.com/en/download/manual.jsp
-START /wait %NEWPATH%\jre-8u161-windows-i586.exe /s
+START /wait %NEWPATH%\jre-8u171-windows-i586.exe /s
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
-    START /wait %NEWPATH%\jre-8u161-windows-x64.exe /s
+    START /wait %NEWPATH%\jre-8u171-windows-x64.exe /s
     IF EXIST "C:\Program Files (x86)\Java" (
         IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
     ) ELSE ECHO (Failed^)
