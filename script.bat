@@ -45,9 +45,9 @@ IF %OS%==32BIT (
 SET /p "=* PeaZip " <NUL
 REM http://www.peazip.org/
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\peazip-6.5.1.WINDOWS.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-6.6.0.WINDOWS.exe /VERYSILENT
 ) ELSE (
-    START /wait %NEWPATH%\peazip-6.5.1.WIN64.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-6.6.0.WIN64.exe /VERYSILENT
 )
 IF EXIST "C:\Program Files\PeaZip" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -63,9 +63,9 @@ IF EXIST "C:\Program Files\CDBurnerXP" (ECHO (OK^)) ELSE (ECHO (Failed^))
 SET /p "=* VLC media player " <NUL
 REM https://www.videolan.org/vlc/download-windows.html
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\vlc-3.0.1-win32.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.3-win32.exe /L=1046 /S
 ) ELSE (
-    START /wait %NEWPATH%\vlc-3.0.1-win64.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.3-win64.exe /L=1046 /S
 )
 IF EXIST "C:\Program Files\VideoLAN\VLC" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
