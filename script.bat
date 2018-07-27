@@ -9,13 +9,13 @@ IF %ERRORLEVEL% NEQ 0 (
     EXIT /B 1
 )
 
-ECHO *********************************
-ECHO **          CMI 2018           **
-ECHO ** Made with love by Bruno4OvO **
-ECHO ********************************* & ECHO.
-ECHO ---------------------------------
-ECHO -- Installing Default Programs --
-ECHO --------------------------------- & ECHO.
+ECHO ****************************
+ECHO **        CMI 2018        **
+ECHO ** Made with love by BCGS **
+ECHO **************************** & ECHO.
+ECHO ----------------------------
+ECHO ----- Default Programs -----
+ECHO ---------------------------- & ECHO.
 
 REM Disable confirmation prompts 
 ECHO Disabling UAC
@@ -36,10 +36,10 @@ SET /p "=* Google Chrome " <NUL
 REM https://enterprise.google.com/chrome/chrome-browser/
 IF %OS%==32BIT (
     MSIEXEC /i %NEWPATH%\googlechromestandaloneenterprise.msi /qb!-
-    IF EXIST "C:\Program Files\Google" (ECHO (OK^)) ELSE (ECHO (Failed^))
+    IF EXIST "C:\Program Files\Google\Chrome" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
     MSIEXEC /i %NEWPATH%\googlechromestandaloneenterprise64.msi /qb!-
-    IF EXIST "C:\Program Files (x86)\Google" (ECHO (OK^)) ELSE (ECHO (Failed^))
+    IF EXIST "C:\Program Files (x86)\Google\Chrome" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 
 SET /p "=* PeaZip " <NUL
@@ -78,13 +78,13 @@ IF %OS%==32BIT (
     IF EXIST "C:\Program Files (x86)\Adobe" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 
-SET /p "=* Java 8u171 " <NUL
+SET /p "=* Java 8u181 " <NUL
 REM https://www.java.com/en/download/manual.jsp
-START /wait %NEWPATH%\jre-8u171-windows-i586.exe /s
+START /wait %NEWPATH%\jre-8u181-windows-i586.exe /s
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
-    START /wait %NEWPATH%\jre-8u171-windows-x64.exe /s
+    START /wait %NEWPATH%\jre-8u181-windows-x64.exe /s
     IF EXIST "C:\Program Files (x86)\Java" (
         IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
     ) ELSE ECHO (Failed^)

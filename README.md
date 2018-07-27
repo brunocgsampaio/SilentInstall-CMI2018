@@ -14,13 +14,13 @@ The script is self-destructive. After the installation process you'll no longer 
 - [CDBurnerXP](https://cdburnerxp.se/en/download)
 - [VLC media player](https://www.videolan.org/vlc/download-windows.html)
 - [Acrobat Reader DC](https://get.adobe.com/reader/enterprise/)
-- [Java 8u171](https://www.java.com/en/download/manual.jsp)
+- [Java](https://www.java.com/en/download/manual.jsp)
 - [WPS Office](https://www.wps.com/download/)
 - [Avira](https://www.avira.com/pt-br/free-antivirus-windows#start-download-av)
-- [Driver Booster 5 *](https://www.iobit.com/pt/driver-booster.php)
+- [Driver Booster*](https://www.iobit.com/pt/driver-booster.php)
 
 \* *Do not forget to uninstall it after drivers have been updated*
 
 \
-**Made with :hearts: by Bruno4OvO** :trollface:  
+**Made with :hearts: by BCGS** :trollface:  
 CMI-NTI-UFPE 2018
