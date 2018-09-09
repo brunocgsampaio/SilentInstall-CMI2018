@@ -16,10 +16,13 @@ The script is self-destructive. After the installation process you'll no longer 
 - [Acrobat Reader DC](https://get.adobe.com/reader/enterprise/)
 - [Java](https://www.java.com/en/download/manual.jsp)
 - [WPS Office](https://www.wps.com/download/)
-- [Avira](https://www.avira.com/pt-br/free-antivirus-windows#start-download-av)
+- [Kaspersky Free](https://www.kaspersky.com/free-antivirus)
 - [Driver Booster*](https://www.iobit.com/pt/driver-booster.php)
 
 \* *Do not forget to uninstall it after drivers have been updated*
+
+
+#### :zap: You can download the script and the above list of softwares directly [here](https://drive.google.com/drive/folders/1YH645tHXYy2TnLlCWDtildqOeHfktQgL).
 
 \
 **Made with :hearts: by BCGS** :trollface:  

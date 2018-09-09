@@ -1,5 +1,5 @@
 @ECHO OFF
-COLOR 15
+COLOR 08
 
 REM Check if it has elevated privileges
 NET SESSION >NUL 2>&1
@@ -32,6 +32,31 @@ REM Move the pack to (System32/SysWOW64) folder
 MOVE "%~dp0_default_" %WINDIR%\%FOLDER%
 SET NEWPATH=%WINDIR%\%FOLDER%\_default_
 
+REM Choose what to install
+ECHO 1) Everything can be installed
+ECHO 2) I want to exclude some softwares
+ECHO.
+
+SET /p uInput1=Pick one: 
+IF %uInput1%==1 (
+    SET uInput2=""    
+    GOTO Chrome
+)
+
+ECHO.
+ECHO a) Chrome
+ECHO b) PeaZip
+ECHO c) CDBurnerXP
+ECHO d) VLC media player
+ECHO e) Acrobat Read
+ECHO f) Java
+ECHO g) WPS Office
+ECHO h) Kaspersky Free
+ECHO i) Driver Booster & ECHO.
+SET /p uInput2=Pick the ones to exclude and concat them (i.e., bcgh):
+
+:Chrome
+IF NOT x%uInput2:a=%==x%uInput2% GOTO PeaZip
 SET /p "=* Google Chrome " <NUL
 REM https://enterprise.google.com/chrome/chrome-browser/
 IF %OS%==32BIT (
@@ -42,6 +67,8 @@ IF %OS%==32BIT (
     IF EXIST "C:\Program Files (x86)\Google\Chrome" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 
+:PeaZip
+IF NOT x%uInput2:b=%==x%uInput2% GOTO CDBurnerXP
 SET /p "=* PeaZip " <NUL
 REM http://www.peazip.org/
 IF %OS%==32BIT (
@@ -51,6 +78,8 @@ IF %OS%==32BIT (
 )
 IF EXIST "C:\Program Files\PeaZip" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
+:CDBurnerXP
+IF NOT x%uInput2:c=%==x%uInput2% GOTO VLC
 SET /p "=* CDBurnerXP " <NUL
 REM https://cdburnerxp.se/en/download
 IF %OS%==32BIT (
@@ -60,15 +89,19 @@ IF %OS%==32BIT (
 )
 IF EXIST "C:\Program Files\CDBurnerXP" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
+:VLC
+IF NOT x%uInput2:d=%==x%uInput2% GOTO Adobe
 SET /p "=* VLC media player " <NUL
 REM https://www.videolan.org/vlc/download-windows.html
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\vlc-3.0.3-win32.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.4-win32.exe /L=1046 /S
 ) ELSE (
-    START /wait %NEWPATH%\vlc-3.0.3-win64.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.4-win64.exe /L=1046 /S
 )
 IF EXIST "C:\Program Files\VideoLAN\VLC" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
+:Adobe
+IF NOT x%uInput2:e=%==x%uInput2% GOTO Java
 SET /p "=* Acrobat Reader DC " <NUL
 REM https://get.adobe.com/reader/enterprise/
 START /wait %NEWPATH%\AcroRdrDC1800920044_pt_BR.exe /sALL
@@ -78,6 +111,8 @@ IF %OS%==32BIT (
     IF EXIST "C:\Program Files (x86)\Adobe" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 
+:Java
+IF NOT x%uInput2:f=%==x%uInput2% GOTO WPS
 SET /p "=* Java 8u181 " <NUL
 REM https://www.java.com/en/download/manual.jsp
 START /wait %NEWPATH%\jre-8u181-windows-i586.exe /s
@@ -90,22 +125,28 @@ IF %OS%==32BIT (
     ) ELSE ECHO (Failed^)
 )
 
+:WPS
+IF NOT x%uInput2:g=%==x%uInput2% GOTO Kaspersky
 SET /p "=* WPS Office " <NUL
 REM https://www.wps.com/download/
 START /wait %NEWPATH%\setup_XA_mui_10.2.0.5996_Free_100.103.exe /S /ACCEPTEULA=1
 IF EXIST "%UserProfile%\AppData\Local\Kingsoft\WPS Office" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
-SET /p "=* Avira " <NUL
-REM https://www.avira.com/pt-br/free-antivirus-windows#start-download-av
+:Kaspersky
+IF NOT x%uInput2:h=%==x%uInput2% GOTO DriverBooster
+SET /p "=* Kaspersky Free " <NUL
+REM https://www.kaspersky.com.br/downloads/thank-you/free-antivirus-download
 REM ** PS: Cannot fully install this boy silently. Consider opening it afterwards **
-START /wait %NEWPATH%\avira_ptbr_av_5a6e51e342864__ws.exe /S /v/qn
 IF %OS%==32BIT (
-    IF EXIST "C:\Program Files\Avira" (ECHO (OK^)) ELSE (ECHO (Failed^))
+    START /wait %NEWPATH%\kaspersky_free_x86.exe /S /AGREETOEULA
 ) ELSE (
-    IF EXIST "C:\Program Files (x86)\Avira" (ECHO (OK^)) ELSE (ECHO (Failed^))
+    START /wait %NEWPATH%\kaspersky_free_x64.exe /S /AGREETOEULA
 )
+IF EXIST "C:\Program Files\Kaspersky Lab\Kaspersky Free 18.0.0" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ECHO.
 
+:DriverBooster
+IF NOT x%uInput2:i=%==x%uInput2% GOTO EOF
 ECHO ------------------------------------------
 ECHO --             Temp Program             --
 ECHO -- Do not forget to remove it afterward --
@@ -121,6 +162,7 @@ IF %OS%==32BIT (
 )
 ECHO.
 
+:EOF
 REM Re-enable confirmation prompts 
 ECHO Re-enabling UAC
 REG add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 5 /f
