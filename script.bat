@@ -83,9 +83,9 @@ IF NOT x%uInput2:c=%==x%uInput2% GOTO VLC
 SET /p "=* CDBurnerXP " <NUL
 REM https://cdburnerxp.se/en/download
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.6795.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7035.exe /SILENT /ACCEPTEULA=1
 ) ELSE (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.6795_x64.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7035_x64.exe /SILENT /ACCEPTEULA=1
 )
 IF EXIST "C:\Program Files\CDBurnerXP" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
