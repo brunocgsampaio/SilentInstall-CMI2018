@@ -72,9 +72,9 @@ IF NOT x%uInput2:b=%==x%uInput2% GOTO CDBurnerXP
 SET /p "=* PeaZip " <NUL
 REM http://www.peazip.org/
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\peazip-6.6.0.WINDOWS.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-6.6.1.WINDOWS.exe /VERYSILENT
 ) ELSE (
-    START /wait %NEWPATH%\peazip-6.6.0.WIN64.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-6.6.1.WIN64.exe /VERYSILENT
 )
 IF EXIST "C:\Program Files\PeaZip" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -83,9 +83,9 @@ IF NOT x%uInput2:c=%==x%uInput2% GOTO VLC
 SET /p "=* CDBurnerXP " <NUL
 REM https://cdburnerxp.se/en/download
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7035.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7041.exe /SILENT /ACCEPTEULA=1
 ) ELSE (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7035_x64.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7041_x64.exe /SILENT /ACCEPTEULA=1
 )
 IF EXIST "C:\Program Files\CDBurnerXP" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -115,11 +115,11 @@ IF %OS%==32BIT (
 IF NOT x%uInput2:f=%==x%uInput2% GOTO WPS
 SET /p "=* Java 8u181 " <NUL
 REM https://www.java.com/en/download/manual.jsp
-START /wait %NEWPATH%\jre-8u181-windows-i586.exe /s
+START /wait %NEWPATH%\jre-8u191-windows-i586.exe /s
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
-    START /wait %NEWPATH%\jre-8u181-windows-x64.exe /s
+    START /wait %NEWPATH%\jre-8u191-windows-x64.exe /s
     IF EXIST "C:\Program Files (x86)\Java" (
         IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
     ) ELSE ECHO (Failed^)
