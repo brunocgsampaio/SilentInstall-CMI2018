@@ -113,7 +113,7 @@ IF %OS%==32BIT (
 
 :Java
 IF NOT x%uInput2:f=%==x%uInput2% GOTO WPS
-SET /p "=* Java 8u181 " <NUL
+SET /p "=* Java " <NUL
 REM https://www.java.com/en/download/manual.jsp
 START /wait %NEWPATH%\jre-8u191-windows-i586.exe /s
 IF %OS%==32BIT (
@@ -147,12 +147,12 @@ ECHO.
 
 :DriverBooster
 IF NOT x%uInput2:i=%==x%uInput2% GOTO EOF
-ECHO ------------------------------------------
-ECHO --             Temp Program             --
-ECHO -- Do not forget to remove it afterward --
-ECHO ------------------------------------------ & ECHO.
+ECHO -------------------------------------------
+ECHO --             ~Temp Program             --
+ECHO -- Do not forget to remove it afterwards --
+ECHO ------------------------------------------- & ECHO.
 
-SET /p "=* Driver Booster 5 " <NUL
+SET /p "=* Driver Booster " <NUL
 REM https://www.iobit.com/pt/driver-booster.php
 START /wait %NEWPATH%\driver_booster_setup.exe /VERYSILENT
 IF %OS%==32BIT (
