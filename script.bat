@@ -83,9 +83,9 @@ IF NOT x%uInput2:c=%==x%uInput2% GOTO VLC
 SET /p "=* CDBurnerXP " <NUL
 REM https://cdburnerxp.se/en/download
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7041.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7042.exe /SILENT /ACCEPTEULA=1
 ) ELSE (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7041_x64.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7042_x64.exe /SILENT /ACCEPTEULA=1
 )
 IF EXIST "C:\Program Files\CDBurnerXP" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -94,9 +94,9 @@ IF NOT x%uInput2:d=%==x%uInput2% GOTO Adobe
 SET /p "=* VLC media player " <NUL
 REM https://www.videolan.org/vlc/download-windows.html
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\vlc-3.0.4-win32.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.6-win32.exe /L=1046 /S
 ) ELSE (
-    START /wait %NEWPATH%\vlc-3.0.4-win64.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.6-win64.exe /L=1046 /S
 )
 IF EXIST "C:\Program Files\VideoLAN\VLC" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -115,11 +115,11 @@ IF %OS%==32BIT (
 IF NOT x%uInput2:f=%==x%uInput2% GOTO WPS
 SET /p "=* Java " <NUL
 REM https://www.java.com/en/download/manual.jsp
-START /wait %NEWPATH%\jre-8u191-windows-i586.exe /s
+START /wait %NEWPATH%\jre-8u211-windows-i586.exe /s
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
-    START /wait %NEWPATH%\jre-8u191-windows-x64.exe /s
+    START /wait %NEWPATH%\jre-8u211-windows-x64.exe /s
     IF EXIST "C:\Program Files (x86)\Java" (
         IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
     ) ELSE ECHO (Failed^)
