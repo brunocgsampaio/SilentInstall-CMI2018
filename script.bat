@@ -136,17 +136,15 @@ IF EXIST "%UserProfile%\AppData\Local\Kingsoft\WPS Office" (ECHO (OK^)) ELSE (EC
 IF NOT x%uInput2:h=%==x%uInput2% GOTO DriverBooster
 SET /p "=* Kaspersky Free " <NUL
 REM https://www.kaspersky.com.br/downloads/thank-you/free-antivirus-download
-SET "TRUE="
-IF %OS%==32BIT (
-    IF NOT EXIST "C:\Program Files\Microsoft.NET\RedistList\AssemblyList_4_client.xml" (SET TRUE=1)
-) ELSE (
-    IF NOT EXIST "C:\Program Files (x86)\Microsoft.NET\RedistList\AssemblyList_4_client.xml" (SET TRUE=1)
-)
-IF DEFINED TRUE (
-    START /wait %NEWPATH%\dotNetFx40_Full_x86_x64.exe /q /norestart
-)
+
+REM .Net Framework 4.8 (system requirement)
+START /wait %NEWPATH%\ndp48-x86-x64-allos-enu.exe /q /norestart
 START /wait %NEWPATH%\kaspersky_free_x86.exe /S /AGREETOEULA
-IF EXIST "C:\Program Files (x86)\Kaspersky Lab\Kaspersky Free 18.0.0" (ECHO (OK^)) ELSE (ECHO (Failed^))
+IF %OS%==32BIT (
+    IF EXIST "C:\Program Files\Kaspersky Lab\Kaspersky Free 18.0.0" (ECHO (OK^)) ELSE (ECHO (Failed^))
+) ELSE (
+    IF EXIST "C:\Program Files (x86)\Kaspersky Lab\Kaspersky Free 18.0.0" (ECHO (OK^)) ELSE (ECHO (Failed^))
+)
 ECHO.
 
 :DriverBooster
