@@ -32,9 +32,9 @@ REM Move the pack to (System32/SysWOW64) folder
 MOVE "%~dp0_default_" %WINDIR%\%FOLDER%
 SET NEWPATH=%WINDIR%\%FOLDER%\_default_
 
-REM Choose what to install
-ECHO 1) Everything can be installed
-ECHO 2) I want to exclude some softwares
+REM Pick an option
+ECHO 1) I want to install everything
+ECHO 2) I DON'T want to install everything
 ECHO.
 
 SET /p uInput1=Pick one: 
@@ -53,7 +53,7 @@ ECHO f) Java
 ECHO g) WPS Office
 ECHO h) Kaspersky Free
 ECHO i) Driver Booster & ECHO.
-SET /p uInput2=Pick the ones to exclude and concat them (i.e., bcgh):
+SET /p uInput2=Pick what NOT to install (e.g., bcgh):
 
 :Chrome
 IF NOT x%uInput2:a=%==x%uInput2% GOTO PeaZip
@@ -72,9 +72,9 @@ IF NOT x%uInput2:b=%==x%uInput2% GOTO CDBurnerXP
 SET /p "=* PeaZip " <NUL
 REM http://www.peazip.org/
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\peazip-6.6.1.WINDOWS.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-6.8.0.WINDOWS.exe /VERYSILENT
 ) ELSE (
-    START /wait %NEWPATH%\peazip-6.6.1.WIN64.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-6.8.0.WIN64.exe /VERYSILENT
 )
 IF EXIST "C:\Program Files\PeaZip" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -129,7 +129,7 @@ IF %OS%==32BIT (
 IF NOT x%uInput2:g=%==x%uInput2% GOTO Kaspersky
 SET /p "=* WPS Office " <NUL
 REM https://www.wps.com/download/
-START /wait %NEWPATH%\setup_XA_mui_10.2.0.5996_Free_100.103.exe /S /ACCEPTEULA=1
+START /wait %NEWPATH%\WPSOffice_11.2.0.8339_Free.exe /S /ACCEPTEULA=1
 IF EXIST "%UserProfile%\AppData\Local\Kingsoft\WPS Office" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
 :Kaspersky
@@ -137,12 +137,16 @@ IF NOT x%uInput2:h=%==x%uInput2% GOTO DriverBooster
 SET /p "=* Kaspersky Free " <NUL
 REM https://www.kaspersky.com.br/downloads/thank-you/free-antivirus-download
 
-REM .Net Framework 4.8 (system requirement)
-START /wait %NEWPATH%\ndp48-x86-x64-allos-enu.exe /q /norestart
-START /wait %NEWPATH%\kaspersky_free_x86.exe /S /AGREETOEULA
+REM Check if .Net Framework 4.x (Kaspersky System Requirement) is already installed
+REG QUERY "HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" > NUL
+IF %ERRORLEVEL% EQU 1 (
+    START /wait %NEWPATH%\NDP471-KB4033342-x86-x64-AllOS-ENU.exe /q /norestart
+)
 IF %OS%==32BIT (
+    START /wait %NEWPATH%\kaspersky_free_x86.exe
     IF EXIST "C:\Program Files\Kaspersky Lab\Kaspersky Free 18.0.0" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
+    START /wait %NEWPATH%\kaspersky_free_x64.exe
     IF EXIST "C:\Program Files (x86)\Kaspersky Lab\Kaspersky Free 18.0.0" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 ECHO.
