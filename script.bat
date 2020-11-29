@@ -33,8 +33,8 @@ MOVE "%~dp0_default_" %WINDIR%\%FOLDER%
 SET NEWPATH=%WINDIR%\%FOLDER%\_default_
 
 REM Pick an option
-ECHO 1) I want to install everything
-ECHO 2) I DON'T want to install everything
+ECHO 1) Full installation
+ECHO 2) Customized installation
 ECHO.
 
 SET /p uInput1=Pick one: 
@@ -60,10 +60,10 @@ IF NOT x%uInput2:a=%==x%uInput2% GOTO PeaZip
 SET /p "=* Google Chrome " <NUL
 REM https://enterprise.google.com/chrome/chrome-browser/
 IF %OS%==32BIT (
-    MSIEXEC /i %NEWPATH%\googlechromestandaloneenterprise.msi /qb!-
+    MSIEXEC /i %NEWPATH%\GoogleChromeStandaloneEnterprise.msi /qb!-
     IF EXIST "C:\Program Files\Google\Chrome" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
-    MSIEXEC /i %NEWPATH%\googlechromestandaloneenterprise64.msi /qb!-
+    MSIEXEC /i %NEWPATH%\GoogleChromeStandaloneEnterprise64.msi /qb!-
     IF EXIST "C:\Program Files (x86)\Google\Chrome" (ECHO (OK^)) ELSE (ECHO (Failed^))
 )
 
@@ -72,9 +72,9 @@ IF NOT x%uInput2:b=%==x%uInput2% GOTO CDBurnerXP
 SET /p "=* PeaZip " <NUL
 REM http://www.peazip.org/
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\peazip-6.8.0.WINDOWS.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-7.5.0.WINDOWS.exe /VERYSILENT
 ) ELSE (
-    START /wait %NEWPATH%\peazip-6.8.0.WIN64.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-7.5.0.WIN64.exe /VERYSILENT
 )
 IF EXIST "C:\Program Files\PeaZip" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -83,9 +83,9 @@ IF NOT x%uInput2:c=%==x%uInput2% GOTO VLC
 SET /p "=* CDBurnerXP " <NUL
 REM https://cdburnerxp.se/en/download
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7042.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7128_minimal.exe /SILENT /ACCEPTEULA=1
 ) ELSE (
-    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7042_x64.exe /SILENT /ACCEPTEULA=1
+    START /wait %NEWPATH%\cdbxp_setup_4.5.8.7128_x64_minimal.exe /SILENT /ACCEPTEULA=1
 )
 IF EXIST "C:\Program Files\CDBurnerXP" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -94,9 +94,9 @@ IF NOT x%uInput2:d=%==x%uInput2% GOTO Adobe
 SET /p "=* VLC media player " <NUL
 REM https://www.videolan.org/vlc/download-windows.html
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\vlc-3.0.6-win32.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.11-win32.exe /L=1046 /S
 ) ELSE (
-    START /wait %NEWPATH%\vlc-3.0.6-win64.exe /L=1046 /S
+    START /wait %NEWPATH%\vlc-3.0.11-win64.exe /L=1046 /S
 )
 IF EXIST "C:\Program Files\VideoLAN\VLC" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -104,7 +104,7 @@ IF EXIST "C:\Program Files\VideoLAN\VLC" (ECHO (OK^)) ELSE (ECHO (Failed^))
 IF NOT x%uInput2:e=%==x%uInput2% GOTO Java
 SET /p "=* Acrobat Reader DC " <NUL
 REM https://get.adobe.com/reader/enterprise/
-START /wait %NEWPATH%\AcroRdrDC1800920044_pt_BR.exe /sALL
+START /wait %NEWPATH%\AcroRdrDC1900820071_pt_BR.exe /sALL
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Adobe" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
@@ -115,11 +115,11 @@ IF %OS%==32BIT (
 IF NOT x%uInput2:f=%==x%uInput2% GOTO WPS
 SET /p "=* Java " <NUL
 REM https://www.java.com/en/download/manual.jsp
-START /wait %NEWPATH%\jre-8u211-windows-i586.exe /s
+START /wait %NEWPATH%\jre-8u271-windows-i586.exe /s
 IF %OS%==32BIT (
     IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
 ) ELSE (
-    START /wait %NEWPATH%\jre-8u211-windows-x64.exe /s
+    START /wait %NEWPATH%\jre-8u271-windows-x64.exe /s
     IF EXIST "C:\Program Files (x86)\Java" (
         IF EXIST "C:\Program Files\Java" (ECHO (OK^)) ELSE (ECHO (Failed^))
     ) ELSE ECHO (Failed^)
@@ -129,7 +129,7 @@ IF %OS%==32BIT (
 IF NOT x%uInput2:g=%==x%uInput2% GOTO Kaspersky
 SET /p "=* WPS Office " <NUL
 REM https://www.wps.com/download/
-START /wait %NEWPATH%\WPSOffice_11.2.0.8339_Free.exe /S /ACCEPTEULA=1
+START /wait %NEWPATH%\WPSOffice_11.2.0.9747.exe /S /ACCEPTEULA=1
 IF EXIST "%UserProfile%\AppData\Local\Kingsoft\WPS Office" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
 :Kaspersky
