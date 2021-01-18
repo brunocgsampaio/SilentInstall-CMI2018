@@ -72,9 +72,9 @@ IF NOT x%uInput2:b=%==x%uInput2% GOTO CDBurnerXP
 SET /p "=* PeaZip " <NUL
 REM http://www.peazip.org/
 IF %OS%==32BIT (
-    START /wait %NEWPATH%\peazip-7.5.0.WINDOWS.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-7.7.0.WINDOWS.exe /VERYSILENT
 ) ELSE (
-    START /wait %NEWPATH%\peazip-7.5.0.WIN64.exe /VERYSILENT
+    START /wait %NEWPATH%\peazip-7.7.0.WIN64.exe /VERYSILENT
 )
 IF EXIST "C:\Program Files\PeaZip" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
@@ -129,7 +129,7 @@ IF %OS%==32BIT (
 IF NOT x%uInput2:g=%==x%uInput2% GOTO Kaspersky
 SET /p "=* WPS Office " <NUL
 REM https://www.wps.com/download/
-START /wait %NEWPATH%\WPSOffice_11.2.0.9747.exe /S /ACCEPTEULA=1
+START /wait %NEWPATH%\WPSOffice_11.2.0.9937.exe /S /ACCEPTEULA=1
 IF EXIST "%UserProfile%\AppData\Local\Kingsoft\WPS Office" (ECHO (OK^)) ELSE (ECHO (Failed^))
 
 :Kaspersky
